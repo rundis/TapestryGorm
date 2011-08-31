@@ -1,0 +1,60 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+	mavenRepo urls: ["http://m2repo.spockframework.org/snapshots/", "http://download.java.net/maven/2/"]
+    mavenRepo urls: "http://nexus.devlab722.net/nexus/content/repositories/snapshots"
+    mavenRepo urls: "http://nexus.devlab722.net/nexus/content/repositories/releases"
+}
+
+springVersion = '3.0.5.RELEASE'
+tapestryVersion = '5.2.6'
+grailsVersion = '1.3.7'
+
+configurations {
+    all*.exclude group:'commons-logging', module: 'commons-logging'
+    all*.exclude group:'log4j', module: 'log4j'
+    all*.exclude group:'org.slf4j', module: 'slf4j-log4j12'
+}
+
+dependencies {
+	groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.1'
+
+
+    providedCompile 'javax.servlet:servlet-api:2.4'
+    // consolidate logging to use slf4 api and logback as implementation
+    // Note ordering of dependencies to ensure logback initialized properly as early as possible
+    compile 'ch.qos.logback:logback-core:0.9.29',
+        'ch.qos.logback:logback-classic:0.9.29',
+        'org.slf4j:jcl-over-slf4j:1.6.1',
+        'org.slf4j:jul-to-slf4j:1.6.1'
+
+    compile("org.grails:grails-gorm:$grailsVersion")  {
+           exclude group: 'org.springframework', module: 'spring-webmvc'
+           exclude group: 'org.springframework', module: 'spring-jms'
+    }
+    compile "org.grails:grails-bootstrap:$grailsVersion",
+		"org.springframework:spring-beans:$springVersion",
+        "org.apache.tapestry:tapestry-core:$tapestryVersion",
+        "org.apache.tapestry:tapestry-spring:$tapestryVersion"
+    compile('org.got5:tapestry5-jquery:2.1.2-SNAPSHOT') {changing=true}
+    compile 'joda-time:joda-time:1.6.2', 'joda-time:joda-time-hibernate:1.2'
+
+    compile 'com.h2database:h2:1.3.157'
+    testCompile 'junit:junit:4.8.2',
+            'org.spockframework:spock-core:0.6-groovy-1.8-SNAPSHOT',
+            'org.spockframework:spock-spring:0.6-groovy-1.8-SNAPSHOT',
+            "org.grails:grails-test:$grailsVersion"
+}
+
+jettyRun {
+    httpPort = 8098
+}
+
+ideaProject {
+    withXml { provider ->
+        provider.node.component.find { it.@name == 'ProjectRootManager' }.@"project-jdk-name" = '1.6'
+    }
+}

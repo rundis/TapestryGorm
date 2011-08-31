@@ -1,0 +1,16 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+<head>
+    <title>Gorm Pensions - ${pageName}</title>
+    <link href="${context:css/pensionsmain.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<ul t:type="jquery/superfish" t:clientId="mainMenu" t:vertical="true">
+    <li id="IndexMenu"><t:pagelink t:page="index">Home</t:pagelink></li>
+    <li id="CompaniesMenu"><t:pagelink t:page="companies">Companies</t:pagelink></li>
+</ul>
+<div id="main" style="clear:left;">
+    <t:body/>
+</div>
+
+</body>
+</html>

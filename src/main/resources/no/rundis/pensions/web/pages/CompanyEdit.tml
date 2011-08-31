@@ -1,0 +1,57 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<t:form t:id="editCompany">
+    <t:beaneditor model="model" object="company"/>
+    <t:submit t:value="Save" t:mixins="jquery/button"/>
+</t:form>
+<t:jquery.tabs t:listTabData="prop:listTabData" t:activePanelId="1"/>
+
+
+<t:block id="schemesBlock">
+    <h3>Schemes</h3>
+    <hr/>
+
+    <t:zone id="schemeZone" t:id="schemeZone">
+        <t:grid row="scheme" source="company.schemes" inplace="true" t:include="name, insured" t:add="action">
+            <p:actionCell>
+                <t:actionlink t:id="deleteScheme" context="scheme.id" t:mixins="jquery/button" t:zone="schemeZone"
+                              t:params="deleteOptions"/>
+            </p:actionCell>
+        </t:grid>
+        <t:form t:id="addScheme" t:zone="schemeZone">
+            <t:textfield t:id="newSchemeName" value="newScheme.name"/>
+            <t:checkbox t:id="newSchemeInsured" value="newScheme.insured"/>
+            <t:submit t:value="Add" t:mixins="jquery/button"/>
+        </t:form>
+    </t:zone>
+
+</t:block>
+
+<t:block id="plansBlock">
+
+    <h3>Plans</h3>
+    <hr/>
+
+    <t:zone id="planZone" t:id="planZone">
+        <t:grid row="plan" source="plans" inplace="true" t:include="name, retirementAge, yearsOfService" t:add="scheme, action">
+            <p:schemeCell>${plan.scheme.name}</p:schemeCell>
+            <p:actionCell>
+                <t:actionlink t:id="deletePlan" context="plan.id" t:mixins="jquery/button" t:zone="planZone"
+                              t:params="deleteOptions"/>
+            </p:actionCell>
+        </t:grid>
+        <t:form t:id="addPlan" t:zone="planZone">
+            <t:textfield t:id="newPlanName" value="newPlan.name"/>
+            <t:textField t:id="newPlanRetirementAge" value="newPlan.retirementAge"/>
+            <t:textField t:id="newPlanYearsOfService" value="newPlan.yearsOfService"/>
+            <select t:type="select" t:model="schemeModel" t:value="scheme" t:encoder="schemeEncoder"></select>
+            <t:submit t:value="Add" t:mixins="jquery/button"/>
+        </t:form>
+    </t:zone>
+
+
+</t:block>
+
+
+</html>

@@ -1,0 +1,35 @@
+body {
+   font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+}
+
+
+div#main {
+}
+
+/* override suckerfish menu stuff */
+.sf-menu {
+    margin-bottom: 10px;
+    width: 100%;
+    background: black;
+}
+
+.sf-menu li {
+    background: black;
+    border:  none;
+}
+
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+	color: #CCC;
+    border: none;
+}
+
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+	background:	#1C1C1C;
+	outline:		0;
+}
+
+.sf-menu li.current {
+    color: white;
+    font-weight: bold;
+}
