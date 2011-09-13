@@ -9,7 +9,7 @@
     <li id="EmployeesMenu"><t:pagelink t:page="employees">Employees</t:pagelink></li>
     <li id="CompaniesMenu"><t:pagelink t:page="companies">Companies</t:pagelink></li>
 </ul>
-<div id="main" style="clear:left;">
+<div id="main">
     <t:body/>
 </div>
 

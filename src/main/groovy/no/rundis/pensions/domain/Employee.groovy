@@ -23,8 +23,8 @@ class Employee {
             throw new IllegalArgumentException("Company that employee belongs to does not define the scheme: $scheme")
         }
 
-        def lastMembership = schemeMemberships.first()
-        lastMembership.validFor = lastMembership.validFor.rightClose(fromDate.minusDays(1))
+        def currentActiveMembership = schemeMemberships.first()
+        currentActiveMembership.validFor = currentActiveMembership.validFor.rightClose(fromDate.minusDays(1))
         addToSchemeMemberships(new SchemeMembership(scheme: scheme, validFor: DateInterval.rightOpened(fromDate)))
         return this
     }

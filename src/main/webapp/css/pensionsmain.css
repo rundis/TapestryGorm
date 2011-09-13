@@ -4,6 +4,12 @@ body {
 
 
 div#main {
+    width: 98%;
+    min-height: 800px;
+    background-color: #FFFFFA;
+    margin: auto;
+    display: block;
+    padding: 5px;
 }
 
 /* override suckerfish menu stuff */

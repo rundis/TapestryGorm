@@ -18,6 +18,7 @@ import org.apache.tapestry5.ioc.annotations.Inject
 import org.apache.tapestry5.json.JSONObject
 import org.apache.tapestry5.services.SelectModelFactory
 import org.got5.tapestry5.jquery.utils.JQueryTabData
+import org.apache.tapestry5.corelib.components.Form
 
 /**
  *
@@ -74,6 +75,9 @@ class CompanyEdit {
 
     @InjectComponent
     private Zone planZone
+
+    @InjectComponent
+    private Form addPlan
 
 
     void onActivate(companyId) {
@@ -134,6 +138,10 @@ class CompanyEdit {
 
     def getPlans() {
         company.schemes*.plans.flatten()
+    }
+
+    def onValidateFromAddPlan() {
+
     }
 
     def onSuccessFromAddPlan() {

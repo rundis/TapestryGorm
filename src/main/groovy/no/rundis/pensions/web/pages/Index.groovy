@@ -26,7 +26,6 @@ class Index {
         if (Employee.findAll().size() < 1) {
             new SampleDataPopulator().populate()
         }
-
     }
 
     def onProvideCompletionsFromSSN(String partial) {
@@ -35,7 +34,7 @@ class Index {
 
 
     def onSuccessFromSearchEmployeeBySSN() {
-        def employeesFound = Employee.findAllBySsnLike(ssn + "%")
+        def employeesFound = Employee.findAllBySsn(ssn)
 
         if (employeesFound.size() == 1) {
             return componentResources.createPageLink(EmployeeEdit.class, false, employeesFound[0].id)

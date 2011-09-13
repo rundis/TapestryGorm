@@ -3,11 +3,7 @@ package no.rundis.pensions.web.services
 import org.apache.tapestry5.ValueEncoder
 
 /**
- * Created by IntelliJ IDEA.
- * User: mrundberget
- * Date: 9/4/11
- * Time: 5:06 PM
- * To change this template use File | Settings | File Templates.
+ * Created by magnus.
  */
 class GormObjectEncoder implements ValueEncoder {
     Collection gormObjects

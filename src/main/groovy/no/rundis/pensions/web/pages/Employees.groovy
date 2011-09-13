@@ -6,11 +6,7 @@ import org.apache.tapestry5.json.JSONObject
 import groovy.json.JsonBuilder
 
 /**
- * Created by IntelliJ IDEA.
- * User: mrundberget
- * Date: 9/4/11
- * Time: 9:28 PM
- * To change this template use File | Settings | File Templates.
+ * Created by magnus.
  */
 class Employees {
 

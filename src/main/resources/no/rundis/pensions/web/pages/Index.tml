@@ -1,5 +1,5 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-    <p>Welcome !!</p>
+    <p>${message:welcome_message}</p>
 
     <t:form t:id="searchEmployeeBySSN">
         Lookup by SSN: <t:textfield t:id="SSN" t:mixins="jquery/autocomplete" t:value="ssn" t:minLength="3" class="ui-widget"/>

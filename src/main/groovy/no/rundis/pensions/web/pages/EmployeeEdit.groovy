@@ -10,11 +10,7 @@ import org.apache.tapestry5.beaneditor.BeanModel
 import org.apache.tapestry5.ioc.annotations.Inject
 
 /**
- * Created by IntelliJ IDEA.
- * User: mrundberget
- * Date: 9/4/11
- * Time: 9:05 PM
- * To change this template use File | Settings | File Templates.
+ * Created by magnus
  */
 class EmployeeEdit {
 

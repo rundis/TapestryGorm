@@ -23,6 +23,7 @@
             <t:textfield t:id="newSchemeName" value="newScheme.name"/>
             <t:checkbox t:id="newSchemeInsured" value="newScheme.insured"/>
             <t:submit t:value="Add" t:mixins="jquery/button"/>
+            <t:errors/>
         </t:form>
     </t:zone>
 
@@ -42,11 +43,12 @@
             </p:actionCell>
         </t:grid>
         <t:form t:id="addPlan" t:zone="planZone">
-            <t:textfield t:id="newPlanName" value="newPlan.name"/>
-            <t:textField t:id="newPlanRetirementAge" value="newPlan.retirementAge"/>
-            <t:textField t:id="newPlanYearsOfService" value="newPlan.yearsOfService"/>
-            <select t:type="select" t:model="schemeModel" t:value="scheme" t:encoder="schemeEncoder"></select>
+            <t:textfield t:id="newPlanName" value="newPlan.name" validate="required"/>
+            <t:textField t:id="newPlanRetirementAge" value="newPlan.retirementAge" validate="required"/>
+            <t:textField t:id="newPlanYearsOfService" value="newPlan.yearsOfService" validate="required"/>
+            <select t:type="select" t:model="schemeModel" t:value="scheme" t:encoder="schemeEncoder" validate="required"/>
             <t:submit t:value="Add" t:mixins="jquery/button"/>
+            <t:errors/>
         </t:form>
     </t:zone>
 
