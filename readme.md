@@ -20,11 +20,10 @@ http://codewader.blogspot.com
 
 
 ## Get it up and running
-Prereqs:
 * Clone this repo (duh)
 * Gradle 1.0-milestone 3 installed and working
 
-To run it
+To run it:
     $ gradle jettyRun
 
 
