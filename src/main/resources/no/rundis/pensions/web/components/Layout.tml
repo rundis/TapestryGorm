@@ -6,6 +6,7 @@
 <body>
 <ul t:type="jquery/superfish" t:clientId="mainMenu" t:vertical="true">
     <li id="IndexMenu"><t:pagelink t:page="index">Home</t:pagelink></li>
+    <li id="EmployeesMenu"><t:pagelink t:page="employees">Employees</t:pagelink></li>
     <li id="CompaniesMenu"><t:pagelink t:page="companies">Companies</t:pagelink></li>
 </ul>
 <div id="main" style="clear:left;">

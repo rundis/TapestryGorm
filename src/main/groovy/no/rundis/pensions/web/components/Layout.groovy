@@ -16,7 +16,7 @@ class Layout {
     def RequestGlobals requestGlobals
 
     @Inject
-    def JavaScriptSupport scriptSupport;
+    def JavaScriptSupport scriptSupport
 
     def getPageName() {
         requestGlobals.activePageName
@@ -25,8 +25,8 @@ class Layout {
 
     @AfterRender
     void selectActiveMenuItem() {
-        String tabName = "#" + pageName + "Menu";
-        scriptSupport.addScript("\$('${tabName}').toggleClass('current');");
+        String tabName = "#" + pageName + "Menu"
+        scriptSupport.addScript("\$('${tabName}').toggleClass('current');")
     }
 
 }

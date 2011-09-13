@@ -1,9 +1,9 @@
 <html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
     <p>Welcome !!</p>
 
-    <t:form t:id="SSNSearchForm">
+    <t:form t:id="searchEmployeeBySSN">
         Lookup by SSN: <t:textfield t:id="SSN" t:mixins="jquery/autocomplete" t:value="ssn" t:minLength="3" class="ui-widget"/>
-        <t:submit t:mixins="jquery/button" />
+        <t:submit t:value="Search" t:mixins="jquery/button" />
     </t:form>
 
 </html>

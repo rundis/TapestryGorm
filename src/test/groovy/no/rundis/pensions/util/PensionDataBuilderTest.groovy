@@ -5,7 +5,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration
 import org.springframework.transaction.annotation.Transactional
 import groovy.util.logging.Slf4j
 
-import no.rundis.pensions.domain.DateRange
+import no.rundis.pensions.domain.DateInterval
+import org.joda.time.LocalDate
 
 /**
  * 
@@ -42,8 +43,8 @@ class PensionDataBuilderTest extends spock.lang.Specification {
 
             empAnne = employee (ssn: "111-111", firstName: "Anne", lastName: "Foss", company: rundisCorp,
                 address (street: "Quietcomfort street 1C", zip: "8888", city: "Springfield")) {
-                schemeMembership(scheme: scheme1, validFor: DateRange.openEnded("2001-01-01")) {
-                    planAssignment(plan: scheme1Plan1, validFor: DateRange.openEnded("2001-01-01"))
+                schemeMembership(scheme: scheme1, validFor: DateInterval.rightOpened("2001-01-01")) {
+                    planAssignment(plan: scheme1Plan1, validFor: DateInterval.rightOpened("2001-01-01"))
                 }
             }
 

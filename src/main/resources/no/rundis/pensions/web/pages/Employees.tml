@@ -1,0 +1,11 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+    xmlns:p="tapestry:parameter">
+
+    <t:grid source="employees" row="employee" include="firstName, lastName" add="address, company, edit">
+        <p:addressCell>${employee.address.street}<br/>${employee.address.zip} ${employee.address.city}</p:addressCell>
+        <p:companyCell>${employee.company.name}</p:companyCell>
+        <p:editCell>
+            <t:pagelink t:page="EmployeeEdit" t:context="employee.id" t:mixins="jquery/button" t:params="editParams">Edit</t:pagelink>
+        </p:editCell>
+    </t:grid>
+</html>

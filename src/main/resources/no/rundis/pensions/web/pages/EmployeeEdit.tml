@@ -1,0 +1,31 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<t:form t:id="editEmployee">
+    <t:beaneditor model="model" object="employee"/>
+    <div class="t-beaneditor-row">
+        <t:label for="company"/>
+        <t:textfield t:id="company" t:value="employee.company.name" disabled="true"/>
+    </div>
+
+    <t:submit t:value="Save" t:mixins="jquery/button"/>
+</t:form>
+
+
+<div t:type="any" t:mixins="accordion">
+<t:loop source="employee.schemeMemberships" value="schemeMembership">
+    <h3><a href="#">${schemeMembership.scheme.name} (${schemeMembership.validFor.start} - ${schemeMembership.validFor?.end}
+                )</a></h3>
+    <div>
+        <t:loop source="schemeMembership.planAssignments" value="planAssignment">
+            <div>
+                <h4>${planAssignment.plan.name} (${planAssignment.validFor.start} - ${planAssignment.validFor?.end}
+                    )</h4>
+            </div>
+        </t:loop>
+    </div>
+</t:loop>
+</div>
+
+
+</html>

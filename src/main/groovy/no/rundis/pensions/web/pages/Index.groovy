@@ -4,6 +4,8 @@ import org.apache.tapestry5.annotations.Property
 import no.rundis.pensions.domain.Employee
 import groovy.util.logging.Slf4j
 import no.rundis.pensions.util.SampleDataPopulator
+import org.apache.tapestry5.ComponentResources
+import org.apache.tapestry5.ioc.annotations.Inject
 
 /**
  *
@@ -13,19 +15,32 @@ import no.rundis.pensions.util.SampleDataPopulator
 @Slf4j
 class Index {
 
+    @Inject
+    private ComponentResources componentResources
+
+
     @Property
     private String ssn;
 
     void onActivate() {
         if (Employee.findAll().size() < 1) {
-            log.info "adding a couple of members..."
             new SampleDataPopulator().populate()
         }
 
     }
 
     def onProvideCompletionsFromSSN(String partial) {
-        log.info "Providing completions for: $partial"
         Employee.findAllBySsnLike(partial + "%").collect {it.ssn}
+    }
+
+
+    def onSuccessFromSearchEmployeeBySSN() {
+        def employeesFound = Employee.findAllBySsnLike(ssn + "%")
+
+        if (employeesFound.size() == 1) {
+            return componentResources.createPageLink(EmployeeEdit.class, false, employeesFound[0].id)
+        }
+
+        return null;
     }
 }

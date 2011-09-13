@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.transaction.TransactionConfiguration
 import org.springframework.transaction.annotation.Transactional
+import org.joda.time.LocalDate
 
 /**
  *
@@ -30,10 +31,6 @@ class EmployeeTest extends spock.lang.Specification {
         sessionFactory.currentSession.clear()  // clear 1.st level cache ...
 
         when:
-
-        def emps = Employee.findAllBySsnLike("111%")
-        println emps
-
         def employeeFound = Employee.findByLastNameLike("Rundberget")
 
         then:
@@ -41,7 +38,25 @@ class EmployeeTest extends spock.lang.Specification {
         employeeFound != null
         employeeFound.company != null
         employeeFound.schemeMemberships.size() > 0
+    }
+
+    def "addSchemeMembershipValidFromDate where last membership is open"() {
+        given:
+        sampleDataPopulator.populate()
+        sessionFactory.currentSession.clear()  // clear 1.st level cache ...
+        def emp = Employee.findByLastNameLike("Rundberget")
+        def scheme = Scheme.findByNameLike("Platinum scheme")
+
+        when:
+        emp.addSchemeMembershipValidFromDate(scheme, new LocalDate("2011-01-01"))
+        emp.save(flush: true)
+
+        then:
+        emp.schemeMemberships.first().scheme == scheme
 
     }
+
+
+
 
 }

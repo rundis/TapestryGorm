@@ -9,7 +9,7 @@ import grails.persistence.Entity
  */
 @Entity
 class PlanAssignment {
-    DateRange validFor
+    DateInterval validFor
     Plan plan
 
     static belongsTo = [schemeMembership: SchemeMembership]

@@ -1,21 +1,25 @@
 package no.rundis.pensions.web.pages
 
 import org.apache.tapestry5.annotations.Property
-import no.rundis.pensions.domain.Company
+import no.rundis.pensions.domain.Employee
 import org.apache.tapestry5.json.JSONObject
 import groovy.json.JsonBuilder
 
 /**
- *
- * Created by: magnus
- *
+ * Created by IntelliJ IDEA.
+ * User: mrundberget
+ * Date: 9/4/11
+ * Time: 9:28 PM
+ * To change this template use File | Settings | File Templates.
  */
-class Companies {
-    @Property
-    private Company company
+class Employees {
 
-    def getCompanies() {
-        Company.findAll()
+    @Property
+    private Employee employee
+
+
+    def getEmployees() {
+        Employee.findAll()
     }
 
     def getEditParams() {
@@ -25,7 +29,4 @@ class Companies {
         }
         new JSONObject(builder.toString())
     }
-
-
-
 }

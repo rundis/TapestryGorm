@@ -45,4 +45,16 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:applicationContext.xml</param-value>
     </context-param>
+
+    <!-- Simple hack to load sample data on web app startup -->
+    <filter>
+        <filter-name>sampledata</filter-name>
+        <filter-class>no.rundis.pensions.util.SampleDataFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sampledata</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
 </web-app>
