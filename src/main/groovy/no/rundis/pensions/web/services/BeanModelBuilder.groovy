@@ -1,13 +1,10 @@
 package no.rundis.pensions.web.services
 
 import groovy.util.logging.Slf4j
+import org.apache.tapestry5.beaneditor.BeanModel
+import org.apache.tapestry5.ioc.Messages
 import org.apache.tapestry5.services.BeanModelSource
 import org.apache.tapestry5.services.PropertyConduitSource
-import org.apache.tapestry5.ioc.Messages
-import groovy.transform.TupleConstructor
-import no.rundis.pensions.domain.Company
-import org.apache.tapestry5.beaneditor.BeanModel
-import org.apache.tapestry5.internal.beaneditor.PropertyModelImpl
 
 /**
  * Make working with bean models in tapestry more pleasant.
