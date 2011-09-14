@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional
  * Created by: magnus
  * 
  */
-@Transactional
 class SampleDataPopulator {
 
     def populate() {

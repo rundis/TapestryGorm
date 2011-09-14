@@ -1,7 +1,5 @@
 package no.rundis.pensions.web.services;
 
-import no.rundis.pensions.domain.Employee;
-import no.rundis.pensions.util.SampleDataPopulator;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.Messages;
