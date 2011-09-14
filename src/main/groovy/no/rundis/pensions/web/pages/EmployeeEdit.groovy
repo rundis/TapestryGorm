@@ -20,18 +20,15 @@ class EmployeeEdit {
 
     @Property(write = false)
     @Retain
-    private BeanModel model;
-
-    @Property
-    private Employee employee
-    {
-        model = beanModelBuilder.Employee {
+    private BeanModel model = beanModelBuilder.Employee {
             add(name: "streetAddress", beanPath: "address.street", type: "text")
             add(name: "zipAddress", beanPath: "address.zip", type: "text")
             add(name: "cityAddress", beanPath: "address.city", type: "text")
             remove(properties: ["version", "id"])
         }
-    }
+
+    @Property
+    private Employee employee
 
     @Property
     private SchemeMembership schemeMembership
@@ -42,6 +39,8 @@ class EmployeeEdit {
 
     void onActivate(id) {
         employee = Employee.findById(id)
+
+        println model
     }
 
 

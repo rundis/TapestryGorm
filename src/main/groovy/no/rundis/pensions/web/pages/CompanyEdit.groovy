@@ -34,7 +34,12 @@ class CompanyEdit {
 
     @Property(write = false)
     @Retain
-    private BeanModel model;
+    private BeanModel model = beanModelBuilder.Company {
+            add(name: "streetAddress", beanPath: "address.street", type: "text")
+            add(name: "zipAddress", beanPath: "address.zip", type: "text")
+            add(name: "cityAddress", beanPath: "address.city",  type: "text")
+            remove(properties: ["version", "id"])
+        }
 
     @Inject
     private SelectModelFactory selectModelFactory
@@ -45,14 +50,6 @@ class CompanyEdit {
 
     @Property
     private Company company
-    {
-        model = beanModelBuilder.Company {
-            add(name: "streetAddress", beanPath: "address.street", type: "text")
-            add(name: "zipAddress", beanPath: "address.zip", type: "text")
-            add(name: "cityAddress", beanPath: "address.city",  type: "text")
-            remove(properties: ["version", "id"])
-        }
-    }
 
     @Property
     private Scheme scheme
