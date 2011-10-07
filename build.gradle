@@ -54,6 +54,10 @@ jettyRun {
     httpPort = 8098
 }
 
+test {
+	ignoreFailures = true
+}
+
 ideaProject {
     withXml { provider ->
         provider.node.component.find { it.@name == 'ProjectRootManager' }.@"project-jdk-name" = '1.6'
